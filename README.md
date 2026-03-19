@@ -1,2 +1,2 @@
 # rubymatrix
-Matrix terminal program written in Ruby.
+Matrix CLI program written in Ruby.
