@@ -53,9 +53,9 @@ loop do
     foreground << Char.new(0, col)
   end
 
-  # Randomly stop streams, probability scales with width
+  # Randomly stop streams
   dispense.reject! do |_col|
-    rand([20, cols / 5].min) == 0 # [MAX, cols / MIN] maximum vs. minimum probability
+    rand([5].min) == 0 # set probability
   end
 
   # move letters downward
