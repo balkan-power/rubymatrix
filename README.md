@@ -11,7 +11,7 @@ Matrix CLI program written in Ruby.
 
 - Arguments:
 > -C [colour]
-
+>
 > -d [delay]
-
+>
 > -h (help)
