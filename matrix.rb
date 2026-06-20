@@ -1,7 +1,7 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.1.0"
+version = "1.1.1"
 delay = 0.07 # default delay
 mcolour = "\e[32m" # default colour (green)
 
@@ -55,6 +55,7 @@ end
 if ARGV.include?("-h")
   index = ARGV.index("-h")
   print "\e[2J"
+  print "\e[H"
   print "RubyMatrix version #{version}\n\n"
   print "Usage: ruby matrix.rb -[argument]\n\n"
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
