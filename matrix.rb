@@ -1,3 +1,69 @@
+#!usr/bin/env ruby
+
+# Default constants
+version = "1.1.0"
+delay = 0.07 # default delay
+mcolour = "\e[32m" # default colour (green)
+
+# Colour constants\
+GREEN = "\e[32m"
+RED = "\e[31m"
+YELLOW = "\e[33m"
+BLUE = "\e[34m"
+MAGENTA = "\e[35m"
+CYAN = "\e[36m"
+BLACK = "\e[30m"
+LIGHT_GRAY = "\e[37m"
+
+# Detect delay argument for different speed
+if ARGV.include?("-d")
+  index = ARGV.index("-d")
+  delay = ARGV[index + 1].to_f
+end
+
+if ARGV.include?("-C")
+  index = ARGV.index("-C")
+  color_set = ARGV[index + 1].downcase
+  if color_set == "green"
+    mcolour = GREEN
+  elsif color_set == "red"
+    mcolour = RED
+  elsif color_set == "yellow"
+    mcolour = YELLOW
+  elsif color_set == "blue"
+    mcolour = BLUE
+  elsif color_set == "magenta"
+    mcolour = MAGENTA
+  elsif color_set == "cyan"
+    mcolour = CYAN
+  elsif color_set == "black"
+    mcolour = BLACK
+  elsif color_set == "light gray" || "light grey"
+    mcolour = LIGHT_GRAY
+  else
+    puts "No colour has been correctly specified, defaulting to green."
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
+  end
+end
+
+if ARGV.include?("-h")
+  index = ARGV.index("-h")
+  print "\e[2J"
+  print "RubyMatrix version #{version}\n\n"
+  print "Usage: ruby matrix.rb -[argument]\n\n"
+  print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
+  print "-d [number]: Sets the delay for speed. Default is 0.07 seconds\n"
+  print "-h: Print usage and exit.\n"
+  print "\n"
+  exit
+end
+
 def winsize
  #Ruby 1.9.3 added 'io/console' to the standard library.
  require 'io/console'
@@ -14,14 +80,10 @@ CHAR_SET =
   ('0'..'9').to_a +
   ['!',"@","#","$","%","^","&","*","(",")","-","+","="]
 
-Char = Struct.new(:row, :col)
+Char = Struct.new(:row, :col, :char)
 
-=begin
-  
-Letter instances of Char
-row and col are fields of Struct.
-
-=end
+# Letter instances of Char
+# row and col are fields of Struct.
 
 
 # Initializing these fields before using them.
@@ -30,7 +92,8 @@ dispense   = []
 
 print "\e[2J"   # Clear whole screen once
 
-GREEN = "\e[32m" # Sets green 
+COLOR = mcolour # Sets colour 
+WHITE = "\e[97m" # Sets white
 RESET = "\e[0m"  # Reset colour
 
 # Prevents scrolling by technically switching to a different screen.
@@ -39,6 +102,7 @@ at_exit { print "\e[?1049l" }  # Switch back when program exits
 
 loop do
   rows, cols = winsize
+  heads = {}
 
   background = Array.new(rows) do
     Array.new(cols) { CHAR_SET.sample }
@@ -50,7 +114,7 @@ loop do
 
   # Create falling letters
   dispense.each do |col|
-    foreground << Char.new(0, col)
+    foreground << Char.new(0, col, CHAR_SET.sample)
   end
 
   # Randomly stop streams
@@ -60,6 +124,12 @@ loop do
 
   # move letters downward
   foreground.each do |letter|
+    
+    # Check for leading letter in trail
+    if heads[letter.col].nil? || letter.row > heads[letter.col].row
+      heads[letter.col] = letter
+    end
+
     letter.row += 1
   end
 
@@ -72,13 +142,21 @@ loop do
 
   # Draw falling letters
   foreground.each do |letter|
-    screen[letter.row][letter.col] = CHAR_SET.sample
+
+    # Randomly change a character
+    if rand(15) == 0
+      letter.char = CHAR_SET.sample
+    end
+
+    # Apply befitting colour to letters and output chars
+    color = heads[letter.col] == letter ? WHITE : COLOR
+    screen[letter.row][letter.col] = "#{color}#{letter.char}#{RESET}"
   end
 
   # Print frame
   screen.each do |row|
-    puts GREEN + row.join + RESET # RESET Makes sure only the characters are green
+    puts row.join
   end
 
-  sleep 0.03
+  sleep delay
 end
