@@ -1,17 +1,15 @@
 # rubymatrix
 Matrix CLI program written in Ruby.
 
-### Usage
+## Usage
 #
-- Run by using
+### Run by using
 > ruby matrix.rb
 
-- Run with different arguments
+### Run with different arguments
 > ruby matrix.rb -[argument]
 
-- Arguments:
-> -C [colour]
->
-> -d [delay]
->
-> -h (help)
+### Arguments:
+- -C [colour]
+- -d [delay]
+- -h (help)
