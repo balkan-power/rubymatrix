@@ -1,4 +1,4 @@
-# rubymatrix
+# RubyMatrix
 Matrix CLI program written in Ruby.
 
 ## Usage
