@@ -10,4 +10,6 @@ Matrix CLI program written in Ruby.
 > ruby matrix.rb -[argument]
 
 - Arguments:
-> -C [colour -d [delay] -h (help)
+> -C [colour]
+> -d [delay]
+> -h (help)
