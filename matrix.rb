@@ -1,11 +1,11 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.1.1"
+version = "1.2.0"
 delay = 0.07 # default delay
-mcolour = "\e[32m" # default colour (green)
+mcolour = "\e[92m" # default colour (bright green)
 
-# Colour constants\
+# Colour constants
 GREEN = "\e[32m"
 RED = "\e[31m"
 YELLOW = "\e[33m"
@@ -13,7 +13,15 @@ BLUE = "\e[34m"
 MAGENTA = "\e[35m"
 CYAN = "\e[36m"
 BLACK = "\e[30m"
-LIGHT_GRAY = "\e[37m"
+WHITE = "\e[37m"
+BRIGHT_GREEN = "\e[92m"
+BRIGHT_RED = "\e[91m"
+BRIGHT_YELLOW = "\e[93m"
+BRIGHT_BLUE = "\e[94m"
+BRIGHT_MAGENTA = "\e[95m"
+BRIGHT_CYAN = "\e[96m"
+BRIGHT_BLACK = "\e[90m"
+BRIGHT_WHITE = "\e[97m"
 
 # Detect delay argument for different speed
 if ARGV.include?("-d")
@@ -38,8 +46,28 @@ if ARGV.include?("-C")
     mcolour = CYAN
   elsif color_set == "black"
     mcolour = BLACK
-  elsif color_set == "light gray" || "light grey"
-    mcolour = LIGHT_GRAY
+  elsif color_set == "white"
+    mcolour = WHITE
+  elsif color_set == "bright-green"
+    mcolour = BRIGHT_GREEN
+  elsif color_set == "bright-red"
+    mcolour = BRIGHT_RED
+  elsif color_set == "bright-yellow"
+    mcolour = BRIGHT_YELLOW
+  elsif color_set == "bright-blue"
+    mcolour = BRIGHT_BLUE
+  elsif color_set == "bright-magenta"
+    mcolour = BRIGHT_MAGENTA
+  elsif color_set == "bright-cyan"
+    mcolour = BRIGHT_CYAN
+  elsif color_set == "bright-black" # using || operator breaks arguments below, so i made them all seperate elsif statements.
+    mcolour = BRIGHT_BLACK
+  elsif color_set == "gray"
+    mcolour = BRIGHT_BLACK
+  elsif color_set == "grey"
+    mcolour = BRIGHT_BLACK
+  elsif color_set == "bright-white"
+    mcolour = BRIGHT_WHITE
   else
     puts "No colour has been correctly specified, defaulting to green."
     sleep 1
@@ -61,6 +89,10 @@ if ARGV.include?("-h")
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
   print "-d [number]: Sets the delay for speed. Default is 0.07 seconds\n"
   print "-h: Print usage and exit.\n"
+  print "\n"
+  print "Shortcuts:\n"
+  print "Ctrl + S: Pauses/unpauses the rainfall\n"
+  print "Ctrl + C: Closes the program\n"
   print "\n"
   exit
 end
@@ -86,7 +118,6 @@ Char = Struct.new(:row, :col, :char)
 # Letter instances of Char
 # row and col are fields of Struct.
 
-
 # Initializing these fields before using them.
 foreground = []
 dispense   = []
@@ -98,16 +129,12 @@ WHITE = "\e[97m" # Sets white
 RESET = "\e[0m"  # Reset colour
 
 # Prevents scrolling by technically switching to a different screen.
-print "\e[?1049h"  # Switch to alternate screen buffer
-at_exit { print "\e[?1049l" }  # Switch back when program exits
+print "\e[?1049h"               # Switch to alternate screen buffer
+at_exit { print "\e[?1049l" }   # Switch back when program exits
 
 loop do
   rows, cols = winsize
   heads = {}
-
-  background = Array.new(rows) do
-    Array.new(cols) { CHAR_SET.sample }
-  end
 
   # Spawn new rain sources
   new_streams = [1, cols / 20].max  # At least 1, otherwise cols/20
@@ -150,7 +177,7 @@ loop do
     end
 
     # Apply befitting colour to letters and output chars
-    color = heads[letter.col] == letter ? WHITE : COLOR
+    color = heads[letter.col] == letter ? BRIGHT_WHITE : COLOR
     screen[letter.row][letter.col] = "#{color}#{letter.char}#{RESET}"
   end
 
