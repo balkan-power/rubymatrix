@@ -179,6 +179,7 @@ loop do
     end
 
     # Randomise head letter every frame
+    # and set colour accordingly
     if heads[letter.col] == letter
       letter.char = CHAR_SET.sample
       color = BRIGHT_WHITE
