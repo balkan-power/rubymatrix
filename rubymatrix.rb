@@ -1,7 +1,7 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.2.4"
+version = "1.2.5"
 delay = 0.05        # default delay
 mcolour = "\e[92m"  # default colour (bright green)
 
@@ -161,7 +161,14 @@ loop do
 
   # Spawn new rain sources
   new_streams = [1, cols / 20].max  # At least 1, otherwise cols/20
-  new_streams.times { dispense << rand(cols) }
+  
+  # Prevent duplicate streams, uses less CPU power overall
+  new_streams.times do
+    col = rand(cols)
+    next if dispense.include?(col)
+
+    dispense << col
+  end
 
   # Create falling letters
   dispense.each do |col|
