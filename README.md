@@ -37,8 +37,8 @@ You can use multiple arguments together to change the appearance of your matrix 
 - bright-white
 
 ## DISCLAIMER
-The author of this software is not affiliated with, associated with, or endorsed by, Warner Bros. Pictures.
+The author of this software is not affiliated with, associated with, or endorsed by, Warner Bros. Pictures and its respective owners.
 
-The copyright of The Matrix, and its subsequent works, is property of Warner Bros. Pictures, and is protected under copyright law.
+The copyright of "The Matrix", and its subsequent works, and the entire franchise, is property of Warner Bros. Pictures and its respective owners, and is protected under copyright law.
 
-The author does not claim copyright over The Matrix or any subsequent works belonging to Warner Bros. Pictures, and therefore, only claims copyright over the software RubyMatrix.
+The author does not claim copyright over "The Matrix", or any subsequent works belonging to "The Matrix" franchise belonging to Warner Bros. Pictures and its respective owners, and therefore, only claims copyright over the software RubyMatrix.
