@@ -10,3 +10,4 @@ Matrix CLI program written in Ruby.
 - -C [colour]
 - -d [delay]
 - -h (help)
+- -v (show version)
