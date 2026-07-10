@@ -1,7 +1,7 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.2.0"
+version = "1.2.1"
 delay = 0.07 # default delay
 mcolour = "\e[92m" # default colour (bright green)
 
@@ -89,11 +89,18 @@ if ARGV.include?("-h")
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
   print "-d [number]: Sets the delay for speed. Default is 0.07 seconds\n"
   print "-h: Print usage and exit.\n"
+  print "-v: Show version number.\n"
   print "\n"
   print "Shortcuts:\n"
   print "Ctrl + S: Pauses/unpauses the rainfall\n"
   print "Ctrl + C: Closes the program\n"
   print "\n"
+  exit
+end
+
+if ARGV.include?("-v")
+  index = ARGV.index("-v")
+  print "RubyMatrix version #{version}\n"
   exit
 end
 
@@ -183,7 +190,7 @@ loop do
 
   # Print frame
   screen.each do |row|
-    puts row.join
+    print row.join  # Must use print instead of puts, or else flickering will occur!
   end
 
   sleep delay
