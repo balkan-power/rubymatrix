@@ -191,7 +191,7 @@ loop do
   end
 
   # Remove letters that hit the bottom, and when resized smaller
-  foreground.reject! { |l| l.row >= rows || l.col >= cols }
+  foreground.reject! { |letter| letter.row >= rows || letter.col >= cols }
 
   print "\e[H"   # Move cursor to top-left
 
