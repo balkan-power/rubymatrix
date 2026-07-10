@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 # Default constants
-version = "1.2.5"
+version = "1.2.6"
 delay = 0.05        # default delay
 mcolour = "\e[92m"  # default colour (bright green)
 
@@ -50,49 +50,36 @@ end
 
 if ARGV.include?("-C")
   index = ARGV.index("-C")
-  color_set = ARGV[index + 1].downcase
-  # Using || operator breaks arguments below, so I made them all seperate elsif statements.
-  if color_set == "green"
-    mcolour = GREEN
-  elsif color_set == "red"
-    mcolour = RED
-  elsif color_set == "yellow"
-    mcolour = YELLOW
-  elsif color_set == "blue"
-    mcolour = BLUE
-  elsif color_set == "magenta"
-    mcolour = MAGENTA
-  elsif color_set == "cyan"
-    mcolour = CYAN
-  elsif color_set == "black"
-    mcolour = BLACK
-  elsif color_set == "white"
-    mcolour = WHITE
-  elsif color_set == "bright-green"
-    mcolour = BRIGHT_GREEN
-  elsif color_set == "bright-red"
-    mcolour = BRIGHT_RED
-  elsif color_set == "bright-yellow"
-    mcolour = BRIGHT_YELLOW
-  elsif color_set == "bright-blue"
-    mcolour = BRIGHT_BLUE
-  elsif color_set == "bright-magenta"
-    mcolour = BRIGHT_MAGENTA
-  elsif color_set == "bright-cyan"
-    mcolour = BRIGHT_CYAN
-  elsif color_set == "bright-black"
-    mcolour = BRIGHT_BLACK
-  elsif color_set == "bright-white"
-    mcolour = BRIGHT_WHITE
+  color_set = ARGV[index + 1]
+  COLORS = {
+    "green" => GREEN,
+    "red" => RED,
+    "yellow" => YELLOW,
+    "blue" => BLUE,
+    "magenta" => MAGENTA,
+    "cyan" => CYAN,
+    "black" => BLACK,
+    "white" => WHITE,
+    "bright-green" => BRIGHT_GREEN,
+    "bright-red" => BRIGHT_RED,
+    "bright-yellow" => BRIGHT_YELLOW,
+    "bright-blue" => BRIGHT_BLUE,
+    "bright-magenta" => BRIGHT_MAGENTA,
+    "bright-cyan" => BRIGHT_CYAN,
+    "bright-black" => BRIGHT_BLACK,
+    "bright-white" => BRIGHT_WHITE
+  }
+  if color_set.nil?
+    puts "No colour has been correctly specified, defaulting to bright green."
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
   else
-    puts "No colour has been correctly specified, defaulting to green."
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
+      mcolour = COLORS[color_set.downcase] || mcolour
   end
 end
 
