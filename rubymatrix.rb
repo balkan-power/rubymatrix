@@ -107,7 +107,7 @@ if ARGV.include?("-h")
   print "\e[2J"
   print "\e[H"
   print "RubyMatrix version #{version}\n\n"
-  print "Usage: ruby matrix.rb -[argument]\n\n"
+  print "Usage: ruby rubymatrix.rb -[argument]\n\n"
   print "-c: Includes half-width kana inside the rainfall's set of characters."
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
   print "-d [number]: Sets the delay for speed. Default is 0.05 seconds\n"
