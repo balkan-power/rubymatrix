@@ -1,8 +1,8 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.2.2"
-delay = 0.07 # default delay
+version = "1.2.3"
+delay = 0.05 # default delay
 mcolour = "\e[92m" # default colour (bright green)
 
 # Colour constants
@@ -32,6 +32,7 @@ end
 if ARGV.include?("-C")
   index = ARGV.index("-C")
   color_set = ARGV[index + 1].downcase
+  # Using || operator breaks arguments below, so I made them all seperate elsif statements.
   if color_set == "green"
     mcolour = GREEN
   elsif color_set == "red"
@@ -60,11 +61,7 @@ if ARGV.include?("-C")
     mcolour = BRIGHT_MAGENTA
   elsif color_set == "bright-cyan"
     mcolour = BRIGHT_CYAN
-  elsif color_set == "bright-black" # using || operator breaks arguments below, so i made them all seperate elsif statements.
-    mcolour = BRIGHT_BLACK
-  elsif color_set == "gray"
-    mcolour = BRIGHT_BLACK
-  elsif color_set == "grey"
+  elsif color_set == "bright-black"
     mcolour = BRIGHT_BLACK
   elsif color_set == "bright-white"
     mcolour = BRIGHT_WHITE
@@ -132,7 +129,6 @@ dispense   = []
 print "\e[2J"   # Clear whole screen once
 
 COLOR = mcolour # Sets colour 
-WHITE = "\e[97m" # Sets white
 RESET = "\e[0m"  # Reset colour
 
 # Prevents scrolling by technically switching to a different screen.
@@ -157,7 +153,7 @@ loop do
     rand([5].min) == 0 # set probability
   end
 
-  # move letters downward
+  # Move letters downward
   foreground.each do |letter|
     
     # Check for leading letter in trail
@@ -183,14 +179,23 @@ loop do
       letter.char = CHAR_SET.sample
     end
 
+    # Randomise head letter every frame
+    if heads[letter.col] == letter
+      letter.char = CHAR_SET.sample
+      color = BRIGHT_WHITE
+    else
+      color = COLOR
+    end
+
     # Apply befitting colour to letters and output chars
-    color = heads[letter.col] == letter ? BRIGHT_WHITE : COLOR
     screen[letter.row][letter.col] = "#{color}#{letter.char}#{RESET}"
   end
 
   # Print frame
   screen.each do |row|
-    print row.join  # Must use print instead of puts, or else flickering will occur!
+    print row.join
+    # Must use print instead of puts, 
+    # or else flickering will occur in the animation.
   end
 
   sleep delay
