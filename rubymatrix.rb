@@ -2,8 +2,8 @@
 
 # Default constants
 version = "1.2.4"
-delay = 0.05 # default delay
-mcolour = "\e[92m" # default colour (bright green)
+delay = 0.05        # default delay
+mcolour = "\e[92m"  # default colour (bright green)
 
 # Colour constants
 GREEN = "\e[32m"
