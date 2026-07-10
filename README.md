@@ -37,7 +37,7 @@ You can use multiple arguments together to change the appearance of your matrix 
 - bright-white
 
 ## DISCLAIMER
-The author of this software is not associated nor endorsed by Warner Bros. Pictures.
+The author of this software is not associated with, nor endorsed by, Warner Bros. Pictures.
 
 The copyright of The Matrix, and its subsequent works, is property of Warner Bros. Pictures, and is protected under copyright law.
 
