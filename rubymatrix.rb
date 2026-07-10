@@ -84,7 +84,7 @@ if ARGV.include?("-h")
   print "RubyMatrix version #{version}\n\n"
   print "Usage: ruby matrix.rb -[argument]\n\n"
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
-  print "-d [number]: Sets the delay for speed. Default is 0.07 seconds\n"
+  print "-d [number]: Sets the delay for speed. Default is 0.05 seconds\n"
   print "-h: Print usage and exit.\n"
   print "-v: Show version number.\n"
   print "\n"
