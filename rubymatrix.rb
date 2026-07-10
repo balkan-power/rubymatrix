@@ -1,7 +1,7 @@
 #!usr/bin/env ruby
 
 # Default constants
-version = "1.2.3"
+version = "1.2.4"
 delay = 0.05 # default delay
 mcolour = "\e[92m" # default colour (bright green)
 
@@ -23,10 +23,29 @@ BRIGHT_CYAN = "\e[96m"
 BRIGHT_BLACK = "\e[90m"
 BRIGHT_WHITE = "\e[97m"
 
-# Detect delay argument for different speed
-if ARGV.include?("-d")
-  index = ARGV.index("-d")
-  delay = ARGV[index + 1].to_f
+if ARGV.include?("-c")
+  CHAR_SET =
+    ('A'..'Z').to_a +
+    ('a'..'z').to_a +
+    ('0'..'9').to_a +
+    [
+      'ｦ','ｧ','ｨ','ｩ','ｪ','ｫ','ｬ','ｭ','ｮ','ｯ','ｰ','ｱ','ｲ',
+      'ｳ','ｴ','ｵ','ｶ','ｷ','ｸ','ｹ','ｺ','ｻ','ｼ','ｽ','ｾ','ｿ',
+      'ﾀ','ﾁ','ﾂ','ﾃ','ﾄ','ﾅ','ﾆ','ﾇ','ﾈ','ﾉ','ﾊ','ﾋ','ﾌ',
+      'ﾍ','ﾎ','ﾏ','ﾐ','ﾑ','ﾒ','ﾓ','ﾔ','ﾕ','ﾖ','ﾗ','ﾘ','ﾙ',
+      'ﾚ','ﾛ','ﾜ','ﾝ'
+    ] +
+    [
+      '!','@','#','$','%','^','&','*','(',')','-','+','='
+    ]
+else
+    CHAR_SET =
+    ('A'..'Z').to_a +
+    ('a'..'z').to_a +
+    ('0'..'9').to_a +
+    [
+      '!','@','#','$','%','^','&','*','(',')','-','+','='
+    ]
 end
 
 if ARGV.include?("-C")
@@ -77,12 +96,19 @@ if ARGV.include?("-C")
   end
 end
 
+# Detect delay argument for different speed
+if ARGV.include?("-d")
+  index = ARGV.index("-d")
+  delay = ARGV[index + 1].to_f
+end
+
 if ARGV.include?("-h")
   index = ARGV.index("-h")
   print "\e[2J"
   print "\e[H"
   print "RubyMatrix version #{version}\n\n"
   print "Usage: ruby matrix.rb -[argument]\n\n"
+  print "-c: Includes half-width kana inside the rainfall's set of characters."
   print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
   print "-d [number]: Sets the delay for speed. Default is 0.05 seconds\n"
   print "-h: Print usage and exit.\n"
@@ -110,12 +136,6 @@ def winsize
  # that have a tput(1) command, such as Unix clones.
 [Integer(`tput li`), Integer(`tput co`)]
 end
-
-CHAR_SET =
-  ('A'..'Z').to_a +
-  ('a'..'z').to_a +
-  ('0'..'9').to_a +
-  ['!',"@","#","$","%","^","&","*","(",")","-","+","="]
 
 Char = Struct.new(:row, :col, :char)
 
