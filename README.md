@@ -1,6 +1,8 @@
 # RubyMatrix
 Matrix CLI program written in Ruby.
 
+## Prerequisites
+You must have Ruby installed on your machine to run this program.
 ## Usage
 ### Run by using
 > ruby matrix.rb
