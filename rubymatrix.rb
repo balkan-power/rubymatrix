@@ -146,10 +146,10 @@ Char = Struct.new(:row, :col, :char)
 foreground = []
 dispense   = []
 
-print "\e[2J"   # Clear whole screen once
+print "\e[2J"     # Clear whole screen once
 
-COLOR = mcolour # Sets colour 
-RESET = "\e[0m"  # Reset colour
+COLOR = mcolour   # Sets colour 
+RESET = "\e[0m"   # Reset colour
 
 # Prevents scrolling by technically switching to a different screen.
 print "\e[?1049h"               # Switch to alternate screen buffer
