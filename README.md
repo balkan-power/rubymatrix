@@ -9,6 +9,7 @@ You must have Ruby installed on your machine to run this program.
 ### Run with different arguments
 > ruby matrix.rb -[argument]
 ### Arguments:
+- -c (use half-width kana)
 - -C [colour]
 - -d [delay]
 - -h (help)
