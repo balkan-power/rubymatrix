@@ -1,4 +1,4 @@
-#!usr/bin/env ruby
+#!/usr/bin/env ruby
 
 # Default constants
 version = "1.2.5"
