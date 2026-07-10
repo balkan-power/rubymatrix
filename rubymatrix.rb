@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License along with this program.
 # If not, see <https://www.gnu.org/licenses/>.
 
-## DISCLAIMER
+# DISCLAIMER
 #
 # The author of this software is not affiliated with, associated with, or endorsed by,
 # Warner Bros. Pictures and its respective owners.
