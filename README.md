@@ -38,5 +38,7 @@ You can use multiple arguments together to change the appearance of your matrix 
 
 ## DISCLAIMER
 The author of this software is not associated nor endorsed in any way, shape, or form, by Warner Bros. Pictures.
+
 The copyright of The Matrix, and its subsequent works, is property of Warner Bros. Pictures, and is protected under copyright law.
+
 The author does not claim copyright over The Matrix or any subsequent works belonging to Warner Bros. Pictures, and therefore, only claims copyright over the software RubyMatrix.
