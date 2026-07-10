@@ -155,7 +155,6 @@ loop do
 
   # Move letters downward
   foreground.each do |letter|
-    
     # Check for leading letter in trail
     if heads[letter.col].nil? || letter.row > heads[letter.col].row
       heads[letter.col] = letter
