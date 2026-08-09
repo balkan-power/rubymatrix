@@ -30,7 +30,7 @@
 
 
 # Default constants
-version = "1.3.1"
+version = "1.3.2"
 delay = 0.05        # default delay
 mcolour = "\e[92m"  # default colour (bright green)
 
@@ -109,17 +109,34 @@ if ARGV.include?("-h")
   print "\e[2J"
   print "\e[H"
   print "RubyMatrix version #{version}\n\n"
-  print "Usage: ruby rubymatrix.rb -[argument]\n\n"
-  print "-c: Includes half-width kana inside the rainfall's set of characters."
-  print "-C [colour]: Sets a user specified colour for rainfall. Default is green.\n"
+  print "Usage:\n\n"
+  print "With Ruby: ruby rubymatrix.rb -[argument]\n"
+  print "Windows executable: rubymatrix.exe -[argument]\n\n"
+  print "-c: Includes half-width kana inside the rainfall's set of characters.\n"
+  print "-C [colour]: Sets a user specified colour for rainfall. Default is bright green.\n"
   print "-d [number]: Sets the delay for speed. Default is 0.05 seconds\n"
   print "-h: Print usage and exit.\n"
-  print "-v: Show version number.\n"
-  print "\n"
-  print "Shortcuts:\n"
+  print "-v: Show version number.\n\n"
+  print "Shortcuts:\n\n"
   print "Ctrl + S: Pauses/unpauses the rainfall\n"
-  print "Ctrl + C: Closes the program\n"
-  print "\n"
+  print "Ctrl + C: Closes the program\n\n"
+  print "Colour arguments:\n\n"
+  print "green\n"
+  print "red\n"
+  print "yellow\n"
+  print "blue\n"
+  print "magenta\n"
+  print "cyan\n"
+  print "black\n"
+  print "white\n"
+  print "bright-green\n"
+  print "bright-red\n"
+  print "bright-yellow\n"
+  print "bright-blue\n"
+  print "bright-magenta\n"
+  print "bright-cyan\n"
+  print "bright-black\n"
+  print "bright-white\n"
   exit
 end
 
