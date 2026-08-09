@@ -2,6 +2,7 @@
 
 # © 2026 Dimitar Ivanov (balkan-power), all rights reserved.
 
+
 # RubyMatrix is free software: you can redistribute it and/or modify it under the terms of the
 # GNU General Public License as published by the Free Software Foundation, either version 3 of
 # the License, or any later version.
@@ -12,6 +13,7 @@
 # 
 # You should have received a copy of the GNU General Public License along with this program.
 # If not, see <https://www.gnu.org/licenses/>.
+
 
 # DISCLAIMER
 #
@@ -25,6 +27,7 @@
 # The author does not claim copyright over "The Matrix", or any subsequent works
 # belonging to "The Matrix" franchise belonging to Warner Bros. Pictures and its
 # respective owners, and therefore, only claims copyright over the software RubyMatrix.
+
 
 # Default constants
 version = "1.3.0"
