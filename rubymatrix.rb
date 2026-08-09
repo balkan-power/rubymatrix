@@ -30,7 +30,7 @@
 
 
 # Default constants
-version = "1.3.0"
+version = "1.3.1"
 delay = 0.05        # default delay
 mcolour = "\e[92m"  # default colour (bright green)
 
@@ -136,7 +136,7 @@ def winsize
  rescue LoadError
  # This works with older Ruby, but only with systems
  # that have a tput(1) command, such as Unix clones.
-[Integer(`tput li`), Integer(`tput co`)]
+ [Integer(`tput li`), Integer(`tput co`)]
 end
 
 Char = Struct.new(:row, :col, :char)
