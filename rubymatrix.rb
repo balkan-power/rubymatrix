@@ -27,7 +27,7 @@
 # respective owners, and therefore, only claims copyright over the software RubyMatrix.
 
 # Default constants
-version = "1.2.6"
+version = "1.3.0"
 delay = 0.05        # default delay
 mcolour = "\e[92m"  # default colour (bright green)
 
@@ -49,31 +49,27 @@ BRIGHT_CYAN = "\e[96m"
 BRIGHT_BLACK = "\e[90m"
 BRIGHT_WHITE = "\e[97m"
 
+CHAR_SET =
+('A'..'Z').to_a +
+('a'..'z').to_a +
+('0'..'9').to_a +
+[
+  '!','@','#','$','%','^','&','*','(',')','-','+','='
+] +
+# Detect argument for half-kana to be included in the rainfall
 if ARGV.include?("-c")
-  CHAR_SET =
-    ('A'..'Z').to_a +
-    ('a'..'z').to_a +
-    ('0'..'9').to_a +
-    [
-      'ｦ','ｧ','ｨ','ｩ','ｪ','ｫ','ｬ','ｭ','ｮ','ｯ','ｰ','ｱ','ｲ',
-      'ｳ','ｴ','ｵ','ｶ','ｷ','ｸ','ｹ','ｺ','ｻ','ｼ','ｽ','ｾ','ｿ',
-      'ﾀ','ﾁ','ﾂ','ﾃ','ﾄ','ﾅ','ﾆ','ﾇ','ﾈ','ﾉ','ﾊ','ﾋ','ﾌ',
-      'ﾍ','ﾎ','ﾏ','ﾐ','ﾑ','ﾒ','ﾓ','ﾔ','ﾕ','ﾖ','ﾗ','ﾘ','ﾙ',
-      'ﾚ','ﾛ','ﾜ','ﾝ'
-    ] +
-    [
-      '!','@','#','$','%','^','&','*','(',')','-','+','='
-    ]
+  [
+    'ｦ','ｧ','ｨ','ｩ','ｪ','ｫ','ｬ','ｭ','ｮ','ｯ','ｰ','ｱ','ｲ',
+    'ｳ','ｴ','ｵ','ｶ','ｷ','ｸ','ｹ','ｺ','ｻ','ｼ','ｽ','ｾ','ｿ',
+    'ﾀ','ﾁ','ﾂ','ﾃ','ﾄ','ﾅ','ﾆ','ﾇ','ﾈ','ﾉ','ﾊ','ﾋ','ﾌ',
+    'ﾍ','ﾎ','ﾏ','ﾐ','ﾑ','ﾒ','ﾓ','ﾔ','ﾕ','ﾖ','ﾗ','ﾘ','ﾙ',
+    'ﾚ','ﾛ','ﾜ','ﾝ'
+  ]
 else
-    CHAR_SET =
-    ('A'..'Z').to_a +
-    ('a'..'z').to_a +
-    ('0'..'9').to_a +
-    [
-      '!','@','#','$','%','^','&','*','(',')','-','+','='
-    ]
+  [] # Empty array to make sure if no argument is given, program doesn't crash
 end
 
+# Detect colour argument for different rain colour
 if ARGV.include?("-C")
   index = ARGV.index("-C")
   color_set = ARGV[index + 1]
@@ -95,18 +91,8 @@ if ARGV.include?("-C")
     "bright-black" => BRIGHT_BLACK,
     "bright-white" => BRIGHT_WHITE
   }
-  if color_set.nil?
-    puts "No colour has been correctly specified, defaulting to bright green."
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
-  else
-      mcolour = COLORS[color_set.downcase] || mcolour
-  end
+
+  mcolour = COLORS[color_set.downcase] || mcolour
 end
 
 # Detect delay argument for different speed
