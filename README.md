@@ -9,9 +9,12 @@ You must have Ruby installed on your machine to run this program from source.<br
 (Linux binary coming soon?)
 ## Usage
 ### Run by using
-> ruby matrix.rb
+> ruby rubymatrix.rb
+or<br>
+> rubymatrix.exe
+on Windows.
 ### Run with different arguments
-> ruby matrix.rb -[argument]
+> ruby rubymatrix.rb -[argument]
 ### Arguments:
 - -c (use half-width kana)
 - -C [colour]
