@@ -5,7 +5,8 @@ Matrix CLI program written in Ruby.
 ### Windows
 You may run from source or download the executable listed under "Releases" here.
 ### Linux
-You must have Ruby installed on your machine to run this program from source.
+You must have Ruby installed on your machine to run this program from source.<br>
+(Linux binary coming soon?)
 ## Usage
 ### Run by using
 > ruby matrix.rb
