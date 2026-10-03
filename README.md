@@ -12,7 +12,7 @@ You must have Ruby installed on your machine to run this program from source.<br
 > ruby rubymatrix.rb
 ### or
 > rubymatrix.exe
-on Windows.
+### on Windows.
 ### Run with different arguments
 > ruby rubymatrix.rb -[argument]
 ### Arguments:
